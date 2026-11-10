@@ -19,6 +19,7 @@ A_n = np.array(A, dtype=int) # SymPy -> NumPy
 A = sp.Matrix(A_n) # NumPy -> SymPy (floats stay floats)
 A[0,0] = 1
 
+print(S)
 #print(S.det())
 #print(A)
 #print(sp.eye(5))
