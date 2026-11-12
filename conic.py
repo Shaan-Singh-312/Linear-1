@@ -1,11 +1,13 @@
 import sympy as sp
 
-points = []
-for i in range(5):
-    points.append(float(input("Point " + str(i+1)+ " x-cordinate: ")))
-    points.append(float(input("Point " + str(i+1)+ " y-cordinate: ")))
 x,y = sp.symbols("x, y")
-M = sp.Matrix([[x**2, x*y, y**2, x, y, 1], [points[0]**2, points[0]*points[1], points[1]**2, points[0], points[1], 1], [points[2]**2, points[2]*points[3], points[3]**2, points[2], points[3], 1], [points[4]**2, points[4]*points[5], points[5]**2, points[4], points[5], 1],[points[6]**2, points[6]*points[7], points[7]**2, points[6], points[7], 1], [points[8]**2, points[8]*points[9], points[9]**2, points[8], points[9], 1]])
+M = sp.eye(6)
+(M[0,0], M[0,1], M[0,2], M[0,3], M[0,4], M[0,5]) = (x**2, x*y, y**2,x,y,1)
+for i in range(1,6):
+    x_1 = float(input("Point " + str(i)+ " x-cordinate: "))
+    y_1 = float(input("Point " + str(i)+ " y-cordinate: "))
+    (M[i,0], M[i,1], M[i,2], M[i,3], M[i,4], M[i,5]) = (x_1**2, x_1*y_1, y_1**2,x_1,y_1,1)
+
 print(M)
 print()
-print(M.det() * (25/192))
+print(str(M.det()) + " = 0")

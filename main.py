@@ -19,7 +19,6 @@ A_n = np.array(A, dtype=int) # SymPy -> NumPy
 A = sp.Matrix(A_n) # NumPy -> SymPy (floats stay floats)
 A[0,0] = 1
 
-print(S)
 #print(S.det())
 #print(A)
 #print(sp.eye(5))
@@ -35,15 +34,14 @@ M.rref() # rows [1,2,0,4], [0,0,1,1], [0,0,0,0]; pivots (0,2)
 
 #print(np.random.default_rng().integers(-5, 5, (3,3)))
 b = sp.Matrix([[1], [1], [1]])
-M = sp.Matrix([[1,1, 1], [2,-1,1], [2,1,1]])
-A = M
+M = sp.Matrix([[1,1, 1], [2,-1,1], [1,1,1]])
 print(M)
-print(A.rref())
-A = M
-print(A.echelon_form())
 print(M.rank())
+print(M.columnspace())
 print(b)
 print(sp.linsolve((M,b),x,y,z))
+columnspace = list(sp.linsolve((M,b),x,y,z))
+print((1-z) in columnspace[0])
+print(sp.FiniteSet((2/3-2*z/3, 1/3 - z/3, z)))
 print(M.nullspace())
-print("----------------")
-print(M.LUdecomposition())
+print(sp.SparseMatrix([0,0,0]))
